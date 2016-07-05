@@ -107,16 +107,17 @@ public class HeaderScreen {
 				});	    
 			    tool.getPanel().add(importDataButton);
 			    
-			    JButton scheduleButton = new JButton("Schedule");
-				scheduleButton.setFont(new Font("Courier New", Font.PLAIN, 16));
-				scheduleButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						Schedule.schedules(tool);	
-					}
-				});
-				scheduleButton.setBounds(20, 110, 120, 30);
-				tool.getPanel().add(scheduleButton);
-			    
+			    if(tool.getUserType().equalsIgnoreCase("director")){
+				    JButton scheduleButton = new JButton("Schedule");
+					scheduleButton.setFont(new Font("Courier New", Font.PLAIN, 16));
+					scheduleButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							Schedule.schedules(tool);	
+						}
+					});
+					scheduleButton.setBounds(20, 110, 120, 30);
+					tool.getPanel().add(scheduleButton);
+			    }
 				final JButton reportButton = new JButton("Report");
 			    reportButton.setBounds(505, 110, 100, 30);
 			    reportButton.setFont(new Font("Courier New", Font.PLAIN, 16));
@@ -439,6 +440,7 @@ public class HeaderScreen {
 					tool.setStudentsCoursesVector(studentCourses);
 					Vector studentDegrees=readWriteCSVFile.readStudentsDegrees(System.getProperty("user.dir")+"\\src\\StudentCourses.csv");		
 					tool.setSemesters(studentDegrees);
+					tool.setPanel(panel);
 					new MenuScreen().initialize(tool);												
 				}else{
 					JOptionPane.showMessageDialog(loginButton, "Enter user name and password correct !!!");

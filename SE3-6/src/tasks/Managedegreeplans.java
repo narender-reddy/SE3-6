@@ -470,23 +470,23 @@ public class Managedegreeplans {
 				addDegree(tool);
 			}
 		});
-		addButton.setBounds(225,400,150,30);
-		tool.getPanel().add(addButton);		
+		addButton.setBounds(150,400,150,30);
+		tool.getPanel().add(addButton);
 		
-		final JButton updateButton = new JButton("Edit Degree");
+		final JButton updateButton = new JButton("Edit Forecast");
 		updateButton.setBackground(Color.GREEN);		
 		updateButton.setFont(new Font("Courier New", Font.PLAIN, 18));
 		updateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(tool.getSelectedTableRowValue()!=-1){
-					editDegree(tool);	
+					Forecast.addForecast(tool);	
 				}else{
 					JOptionPane.showMessageDialog(updateButton, "Please you should select one row only");
 				}
 			}
 		});
-		updateButton.setBounds(205,400,170,30);
-		//tool.getPanel().add(updateButton);
+		updateButton.setBounds(305,400,200,30);
+		tool.getPanel().add(updateButton);
 		
 		final JButton deleteButton = new JButton("Delete");
 		deleteButton.setBackground(Color.GREEN);		

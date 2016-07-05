@@ -38,19 +38,6 @@ public class Schedule {
 				ReadWriteCSVFile readWriteCSVFile=new ReadWriteCSVFile();
 				Vector schedule=readWriteCSVFile.schedule();
 				tool.setSchedule(readWriteCSVFile.schedule());
-				try{
-					CSVWriter writer = new CSVWriter(new FileWriter(System.getProperty("user.dir")+"\\src\\courseschedule.csv"));
-					Iterator iterator=schedule.iterator();
-					String[] record={"Semester","Course Code & Name","Faculty","Days","Number of student"};
-					writer.writeNext(record);
-					while(iterator.hasNext()){
-						record=(String[])iterator.next();
-						writer.writeNext(record);
-					}			
-					writer.close();
-				}catch(Exception ex){
-					ex.printStackTrace();
-				}
 				viewSchedule(tool);
 			}
 		});
@@ -115,7 +102,6 @@ public class Schedule {
 		label.setBounds(200,125,250,20);
 		tool.getPanel().add(label);
 		
-		ReadWriteCSVFile readCSVFile=new ReadWriteCSVFile();
 		Object rowData[][]= { { "Data", "Data", "Data", "Data","Data"},
                 { "Data", "Data", "Data", "Data","Data"} };;
 		

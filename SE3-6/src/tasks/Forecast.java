@@ -26,13 +26,13 @@ public class Forecast {
 	public static void addForecast(final Tool tool){
 		HeaderScreen headerScreen=new HeaderScreen();
 		headerScreen.getHeaderMenuScreen(tool);
-		final JLabel label=new JLabel("Add Forecast");
+		final JLabel label=new JLabel("Update Forecast");
 		label.setFont(new Font("Courier New", Font.ITALIC, 24));
 		label.setForeground(Color.WHITE);
 		label.setBounds(225,125,250,20);
 		tool.getPanel().add(label);
 		
-		JLabel numberLabel = new JLabel("Semester");
+		JLabel numberLabel = new JLabel("Degree Code");
 		numberLabel.setBounds(75, 165, 100, 20);
 		numberLabel.setForeground(Color.WHITE);
 		tool.getPanel().add(numberLabel);
@@ -81,12 +81,32 @@ public class Forecast {
 				if(semesterName!=null && semesterName.getText().trim().length()!=0 
 						&& numTextField!=null && numTextField.getText().trim().length()!=0){
 					try{
+						Vector degreeVector=new Vector();		
+						try{
+							CSVReader reader = new CSVReader(new FileReader(System.getProperty("user.dir")+"\\src\\Degrees.csv"));
+							List<String[]> totalDegreesList=reader.readAll();
+							CSVWriter writer = new CSVWriter(new FileWriter(System.getProperty("user.dir")+"\\src\\Degrees.csv"));
+							for(String[] degree : totalDegreesList){
+								if(degree[0].equalsIgnoreCase(semesterName.getText().trim())){
+									degree[3]=numTextField.getText();
+									writer.writeNext(degree);
+									degreeVector.add(degree);
+								}else{
+									writer.writeNext(degree);
+									degreeVector.add(degree);
+								}
+							}								
+							writer.close();
+							tool.setDegrees(degreeVector);
+						}catch(Exception ex){
+							ex.printStackTrace();
+						}
 						JOptionPane.showMessageDialog(addCourse, "Updated Succesfully");
 					}catch(Exception ex){
 						ex.printStackTrace();
 					}
 				}else{
-					JOptionPane.showMessageDialog(addCourse, "Please enter course details");
+					JOptionPane.showMessageDialog(addCourse, "Please enter Degree code and forecast details");
 				}
 			}
 		});
