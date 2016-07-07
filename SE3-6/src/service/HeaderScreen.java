@@ -371,7 +371,7 @@ public class HeaderScreen {
 	
 	public void getLoginScreen(final JPanel panel,final Tool tool){
 		panel.removeAll();
-		final JLabel label=new JLabel("Oklahoma Christian University");
+		final JLabel label=new JLabel("Okla Christian University");
 		label.setFont(new Font("Courier New", Font.ITALIC, 24));
 		label.setForeground(Color.WHITE);
 		label.setBounds(75,75,500,20);				
