@@ -774,7 +774,6 @@ public class ReadWriteCSVFile {
 						tempSchedule[4]="25";
 						schedule.add(tempSchedule);
 					}
-					//schedule.add(tempSchedule);
 					
 					finalSchedule[3]=tempSchedule[3];
 					finalSchedule[4]="25";

@@ -94,9 +94,7 @@ public class Import {
 						if(file[i].toString().indexOf("TestDataCourses.csv")!=-1){
 							try{
 								Vector courses=readWriteCSVFile.readWriteCoursesData(file[i].toString());		
-								tool.setCourses(courses);
-								Vector faculties=readWriteCSVFile.readWriteFacultyData(file[i].toString());		
-								tool.setFaculty(faculties);								
+								tool.setCourses(courses);																
 							}catch(Exception ex){
 								ex.printStackTrace();
 							}
